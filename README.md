@@ -150,3 +150,9 @@ moxios is heavily inspired by [jasmine-ajax](https://github.com/jasmine/jasmine-
 ## License
 
 MIT
+
+Explicação:
+
+O axios é uma biblioteca javascript que serve para realizar requisições http. O moxios funciona como um interceptador para esta biblioteca de requisições. Seu objetivo principal é a criação de testes de unidade sem a necessidade de uma conexão real com um servidor, implementando o conceito de mocking.
+Ao analisar o README do repositório e os dados do TestMiner, foi possível identificar que a prática mais relevante de teste é o uso do método moxios.stubRequest(). Este método simula uma chamada de api do axios que deve ser programada no sentido de devolver uma resposta pré-definida conforme uma determinada chamada à api (ou requisição). Podemos ver no exemplo do próprio README como a chamada moxios.stubRequest('/say/hello',...) é programada para retornar um status 200 e um texto 'hello'. Isto evita que o teste falhe por problemas de rede ou latência, os chamados flaky tests. Esta documentação mostra que podemos usar também padrões Regex que permitem capturar várias urls parecidas de forma avançada o que facilita o teste de sistemas complexos que utilizam parâmetros dinâmicos em chamadas do axios. Além de mensagens de sucesso (com status 200) o moxios permite também simular erros de retorno de API como status 400 ou 500, o que também pode ser importante para testar respostas da aplicação em situações de bad request por meio do método request.reject().
+A relevância dessa prática confirmada pelos dados de mineração do Testminer, reside na criação de testes herméticos(que não dependem de nada externo) promovendo o desacoplamento do teste unitário do teste de integração configurando uma prática fundamental para o teste de funcionalidades de aplicações que consomem dados de API tornando os testes rápidos confiáveis e fáceis de manter. 
